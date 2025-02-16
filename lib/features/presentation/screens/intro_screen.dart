@@ -16,8 +16,8 @@ class IntroScreen extends StatelessWidget {
                 "Effortlessly organize your tasks with AI-powered assistance and a clean, intuitive design.",
             image: Center(
               child: Image.asset(
-                'assets/images/projects_logo.png',
-                height: 300.0,
+                'assets/images/intro_1.jpg',
+                height: 400.0,
               ),
             ),
           ),

@@ -67,6 +67,7 @@ flutter:
   assets:
     - assets/images/projects_logo.png
     - assets/images/login_tasks.jpg
+    - assets/images/intro_1.jpg
     - assets/images/intro_3.jpg
     - assets/images/google.png
     - assets/images/facebook.png

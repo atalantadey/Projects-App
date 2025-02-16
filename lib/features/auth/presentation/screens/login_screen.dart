@@ -21,7 +21,7 @@ class _LoginScreenState extends State<LoginScreen>
   void initState() {
     super.initState();
     _animationController = AnimationController(
-      duration: const Duration(seconds: 10),
+      duration: const Duration(seconds: 8),
       vsync: this,
     )..repeat(reverse: true);
 
@@ -109,7 +109,7 @@ class _LoginScreenState extends State<LoginScreen>
                 end: _bottomAlignmentAnimation.value,
                 colors: const [
                   Color(0xFF4CAF50), // Green
-                  Color(0xFF81C784), // Light Green
+                  Color.fromARGB(255, 168, 226, 171), // Light Green
                   Color(0xFF2E7D32), // Dark Green
                 ],
               ),
