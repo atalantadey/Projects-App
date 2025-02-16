@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "280088572155",
+    "project_id": "projects-task-management-app",
+    "storage_bucket": "projects-task-management-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:280088572155:android:2269f859ddd9259bb3005e",
+        "android_client_info": {
+          "package_name": "com.example.projects"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "280088572155-l0eeug7lgog7ngfcmavcur5hmk96974e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCOypkHj2aJEpm7pEOEiunSptK5e9zHd5U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "280088572155-l0eeug7lgog7ngfcmavcur5hmk96974e.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "280088572155-hv82prrjikn9bnt64h9bopkm5hdirk2m.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.projects"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

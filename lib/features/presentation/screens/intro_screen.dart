@@ -50,6 +50,15 @@ class IntroScreen extends StatelessWidget {
           backgroundColor: WidgetStateProperty.all(Colors.green),
         ),
         showNextButton: false,
+        showSkipButton: false,
+        dotsDecorator: DotsDecorator(
+          size: const Size(10.0, 10.0),
+          color: Colors.green,
+          activeSize: const Size(22.0, 10.0),
+          activeShape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(24.0),
+          ),
+        ),
         autoScrollDuration: 4000,
         globalBackgroundColor: Colors.green[30],
       ),

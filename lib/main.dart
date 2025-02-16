@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:projects/features/presentation/screens/intro_screen.dart';
+import 'package:projects/features/auth/domain/widget_tree.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 
@@ -12,7 +15,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(body: IntroScreen()),
+      home: Scaffold(body: WidgetTree()),
     );
   }
 }
+//TODO: Fix the authentication flow in the app
+//TODO: Fix the signup screen part
+//Add Google Sign In for better Accessibility
+//Start Working on the HomeScreen

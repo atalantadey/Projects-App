@@ -1,20 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:projects/features/auth/domain/auth.dart';
-import 'package:projects/features/auth/presentation/screens/sign_up_screen.dart';
-import 'package:projects/features/presentation/screens/home_screen.dart';
+import 'package:projects/features/auth/presentation/screens/login_screen.dart';
 import 'package:projects/features/presentation/widgets/custom_button.dart';
 import 'package:projects/features/presentation/widgets/custom_textfield.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<SignUpScreen> createState() => _SignUpScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen>
+class _SignUpScreenState extends State<SignUpScreen>
     with SingleTickerProviderStateMixin {
-  bool isLogin = false;
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   late AnimationController _animationController;
@@ -100,43 +97,6 @@ class _LoginScreenState extends State<LoginScreen>
     super.dispose();
   }
 
-  Future<void> signInWithEmailAndPassword() async {
-    try {
-      await Auth().signInWithEmailAndPassword(
-          _emailController.text, _passwordController.text);
-      Navigator.push(context, MaterialPageRoute(builder: (_) => HomeScreen()));
-    } catch (e) {
-      setState(() {
-        // Show error message
-      });
-      print(e);
-    }
-  }
-
-  Future<void> createUserWithEmailAndPassword() async {
-    try {
-      await Auth().signUpWithEmailAndPassword(
-          _emailController.text, _passwordController.text);
-      Navigator.push(context, MaterialPageRoute(builder: (_) => HomeScreen()));
-    } catch (e) {
-      setState(() {
-        // Show error message
-      });
-      print(e);
-    }
-  }
-
-  Future<void> signInWithGoogle() async {
-    try {
-      await Auth().signInWithGoogle();
-    } catch (e) {
-      setState(() {
-        // Show error message
-      });
-      print(e);
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -186,33 +146,14 @@ class _LoginScreenState extends State<LoginScreen>
                       obscureText: true,
                     ),
                     const SizedBox(height: 12),
-
-                    // Forgot Password
-                    Align(
-                      alignment: Alignment.centerRight,
-                      child: TextButton(
-                        onPressed: () {},
-                        child: const Text(
-                          'Forgot Password?',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      ),
-                    ),
                     // Login Button
                     CustomButton(
-                      text: isLogin ? 'Login' : 'Sign Up',
+                      text: 'Sign Up',
                       onPressed: () {
                         // Add login logic here
-                        isLogin
-                            ? signInWithEmailAndPassword()
-                            : createUserWithEmailAndPassword();
                       },
                     ),
                     const SizedBox(height: 32),
-
                     Column(
                       children: [
                         const Text(
@@ -240,13 +181,13 @@ class _LoginScreenState extends State<LoginScreen>
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         const Text(
-                          "Don't have an account?",
+                          "Already have an Account?",
                           style: TextStyle(color: Colors.white70),
                         ),
                         TextButton(
-                          onPressed: () => SignUpScreen(),
+                          onPressed: () => LoginScreen(),
                           child: const Text(
-                            'Sign Up',
+                            'Log In',
                             style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
