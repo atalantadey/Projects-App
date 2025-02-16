@@ -1,0 +1,2 @@
+C:/Users/atala/Desktop/Projects App/projects/android/app/.cxx/Debug/30510593/armeabi-v7a/CMakeFiles/edit_cache.dir
+C:/Users/atala/Desktop/Projects App/projects/android/app/.cxx/Debug/30510593/armeabi-v7a/CMakeFiles/rebuild_cache.dir

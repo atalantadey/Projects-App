@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:projects/features/presentation/screens/intro_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -10,16 +11,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'My App',
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('My App'),
-        ),
-        body: Center(
-          child: Text('Hello World'),
-        ),
-      ),
+      home: Scaffold(body: IntroScreen()),
     );
   }
 }
