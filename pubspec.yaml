@@ -36,6 +36,11 @@ dependencies:
   cupertino_icons: ^1.0.8
   animated_introduction: ^1.0.4
   introduction_screen: ^3.1.16
+  flutter_bloc: ^9.0.0
+  equatable: ^2.0.7
+  firebase_auth: ^5.4.2
+  cloud_firestore: ^5.6.3
+  google_sign_in: ^6.2.2
 
 dev_dependencies:
   flutter_test:
@@ -61,6 +66,8 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/projects_logo.png
+    - assets/images/login_tasks.jpg
+    - assets/images/intro_3.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

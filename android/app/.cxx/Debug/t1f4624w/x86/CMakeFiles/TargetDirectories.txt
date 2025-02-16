@@ -1,0 +1,2 @@
+C:/Users/atala/Desktop/Projects App/projects/android/app/.cxx/Debug/t1f4624w/x86/CMakeFiles/edit_cache.dir
+C:/Users/atala/Desktop/Projects App/projects/android/app/.cxx/Debug/t1f4624w/x86/CMakeFiles/rebuild_cache.dir
