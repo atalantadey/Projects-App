@@ -19,7 +19,5 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-//TODO: Fix the authentication flow in the app
-//TODO: Fix the signup screen part
 //Add Google Sign In for better Accessibility
 //Start Working on the HomeScreen

@@ -4,6 +4,7 @@ import 'package:projects/features/auth/domain/auth.dart';
 
 import 'package:projects/features/presentation/screens/home_screen.dart';
 import 'package:projects/features/presentation/widgets/custom_button.dart';
+import 'package:projects/features/presentation/widgets/custom_snack.dart';
 import 'package:projects/features/presentation/widgets/custom_textfield.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -108,11 +109,21 @@ class _LoginScreenState extends State<LoginScreen>
           _emailController.text, _passwordController.text);
       Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (_) => HomeScreen()));
+      CustomSnackbar.show(
+        context: context,
+        message: 'Succesfully Logged In',
+        isError: false,
+      );
     } on FirebaseAuthException catch (e) {
       setState(() {
         // Show error message
         errormessage = e.message;
       });
+      CustomSnackbar.show(
+        context: context,
+        message: errormessage!,
+        isError: true,
+      );
       //print(e);
     }
   }
@@ -123,11 +134,21 @@ class _LoginScreenState extends State<LoginScreen>
           _emailController.text, _passwordController.text);
       Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (_) => HomeScreen()));
+      CustomSnackbar.show(
+        context: context,
+        message: 'Succesfully Signed In',
+        isError: false,
+      );
     } on FirebaseAuthException catch (e) {
       setState(() {
         // Show error message
         errormessage = e.message;
       });
+      CustomSnackbar.show(
+        context: context,
+        message: errormessage!,
+        isError: true,
+      );
       //print(e);
     }
   }
@@ -135,9 +156,18 @@ class _LoginScreenState extends State<LoginScreen>
   Future<void> signInWithGoogle() async {
     try {
       await Auth().signInWithGoogle();
+      CustomSnackbar.show(
+          context: context,
+          message: 'Succesfully Logged In using Google',
+          isError: false);
     } catch (e) {
       setState(() {
         // Show error message
+        CustomSnackbar.show(
+          context: context,
+          message: e.toString(),
+          isError: true,
+        );
       });
       //print(e);
     }
@@ -229,8 +259,11 @@ class _LoginScreenState extends State<LoginScreen>
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Image.asset('assets/images/facebook.png',
-                                height: 40),
+                            GestureDetector(
+                              onTap: () => signInWithGoogle(),
+                              child: Image.asset('assets/images/facebook.png',
+                                  height: 40),
+                            ),
                             const SizedBox(width: 36),
                             Image.asset('assets/images/google.png', height: 40),
                             const SizedBox(width: 36),

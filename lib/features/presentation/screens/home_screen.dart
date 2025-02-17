@@ -1,11 +1,14 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:projects/features/auth/domain/auth.dart';
+import 'package:projects/features/auth/presentation/screens/login_screen.dart';
+import 'package:projects/features/presentation/widgets/custom_snack.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
 
   final User? user = Auth().currentUser;
+  
 
   Future<void> _signOut() async {
     await Auth().signOut();
@@ -19,9 +22,19 @@ class HomeScreen extends StatelessWidget {
     return Text(user?.email ?? 'User Email');
   }
 
-  Widget _signOutButton() {
+  Widget _signOutButton(context) {
     return ElevatedButton(
-      onPressed: _signOut,
+      onPressed: () {
+        _signOut();
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => LoginScreen()));
+        ;
+        CustomSnackbar.show(
+          context: context,
+          message: 'Successfully Signed Out',
+          isError: false,
+        );
+      },
       child: Text('Sign Out'),
     );
   }
@@ -33,15 +46,13 @@ class HomeScreen extends StatelessWidget {
         title: Text('Home Screen'),
       ),
       body: Center(
-        child: Container(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              _title(),
-              _userId(),
-              _signOutButton(),
-            ],
-          ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            _title(),
+            _userId(),
+            _signOutButton(context),
+          ],
         ),
       ),
     );
