@@ -1,6 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:projects/features/auth/domain/auth.dart';
-import 'package:projects/features/auth/presentation/screens/sign_up_screen.dart';
+
 import 'package:projects/features/presentation/screens/home_screen.dart';
 import 'package:projects/features/presentation/widgets/custom_button.dart';
 import 'package:projects/features/presentation/widgets/custom_textfield.dart';
@@ -14,6 +15,7 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen>
     with SingleTickerProviderStateMixin {
+  String? errormessage = '';
   bool isLogin = false;
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
@@ -25,7 +27,7 @@ class _LoginScreenState extends State<LoginScreen>
   void initState() {
     super.initState();
     _animationController = AnimationController(
-      duration: const Duration(seconds: 8),
+      duration: const Duration(seconds: 10),
       vsync: this,
     )..repeat(reverse: true);
 
@@ -104,12 +106,14 @@ class _LoginScreenState extends State<LoginScreen>
     try {
       await Auth().signInWithEmailAndPassword(
           _emailController.text, _passwordController.text);
-      Navigator.push(context, MaterialPageRoute(builder: (_) => HomeScreen()));
-    } catch (e) {
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (_) => HomeScreen()));
+    } on FirebaseAuthException catch (e) {
       setState(() {
         // Show error message
+        errormessage = e.message;
       });
-      print(e);
+      //print(e);
     }
   }
 
@@ -117,12 +121,14 @@ class _LoginScreenState extends State<LoginScreen>
     try {
       await Auth().signUpWithEmailAndPassword(
           _emailController.text, _passwordController.text);
-      Navigator.push(context, MaterialPageRoute(builder: (_) => HomeScreen()));
-    } catch (e) {
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (_) => HomeScreen()));
+    } on FirebaseAuthException catch (e) {
       setState(() {
         // Show error message
+        errormessage = e.message;
       });
-      print(e);
+      //print(e);
     }
   }
 
@@ -133,7 +139,7 @@ class _LoginScreenState extends State<LoginScreen>
       setState(() {
         // Show error message
       });
-      print(e);
+      //print(e);
     }
   }
 
@@ -192,8 +198,8 @@ class _LoginScreenState extends State<LoginScreen>
                       alignment: Alignment.centerRight,
                       child: TextButton(
                         onPressed: () {},
-                        child: const Text(
-                          'Forgot Password?',
+                        child: Text(
+                          isLogin ? 'Forgot Password?' : '',
                           style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.w600,
@@ -239,14 +245,20 @@ class _LoginScreenState extends State<LoginScreen>
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Text(
-                          "Don't have an account?",
+                        Text(
+                          isLogin
+                              ? "Don't have an account?"
+                              : "Already have an account?",
                           style: TextStyle(color: Colors.white70),
                         ),
                         TextButton(
-                          onPressed: () => SignUpScreen(),
-                          child: const Text(
-                            'Sign Up',
+                          onPressed: () {
+                            setState(() {
+                              isLogin = !isLogin;
+                            });
+                          },
+                          child: Text(
+                            isLogin ? 'Sign Up' : 'Login',
                             style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
